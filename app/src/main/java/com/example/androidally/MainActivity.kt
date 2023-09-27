@@ -37,10 +37,10 @@ class MainActivity : ComponentActivity() {
                         composable("landing") {
                             LandingScreen(onItemClick = { (ChapterInfo) -> Unit })
                         }
-                    }
-                }
-            }
-        }
-    }
+                    }  // end NAVHOST
+                }  // end SURFACE
+            }  // end THEME
+        }  // end SETCONTENT
+    }  // end ONCREATE
 }
 
