@@ -1,7 +1,7 @@
 package com.example.androidally.play.domain.repository
 
 import com.example.androidally.play.domain.model.ChapterInfo
-import com.example.androidally.play.domain.model.QuizQuestion
+import com.example.androidally.play.domain.model.Quiz
 import com.example.androidally.util.Resource
 import kotlinx.coroutines.flow.Flow
 
@@ -17,5 +17,5 @@ interface QuizRepository {
 
     suspend fun getModuleContents(
         name: String
-    ): Flow<Resource<List<QuizQuestion>>>
+    ): Flow<Resource<List<Quiz>>>
 }

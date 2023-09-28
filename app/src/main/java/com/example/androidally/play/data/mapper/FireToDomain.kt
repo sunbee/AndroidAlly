@@ -3,7 +3,7 @@ package com.example.androidally.play.data.mapper
 import com.example.androidally.play.data.remote.ChapterInfoFire
 import com.example.androidally.play.data.remote.QuizQuestionFire
 import com.example.androidally.play.domain.model.ChapterInfo
-import com.example.androidally.play.domain.model.QuizQuestion
+import com.example.androidally.play.domain.model.Quiz
 
 fun ChapterInfoFire.toChapterInfo(): ChapterInfo {
     return ChapterInfo(
@@ -13,8 +13,8 @@ fun ChapterInfoFire.toChapterInfo(): ChapterInfo {
     )
 }
 
-fun QuizQuestionFire.toQuizQuestion(): QuizQuestion {
-    return QuizQuestion(
+fun QuizQuestionFire.toQuizQuestion(): Quiz {
+    return Quiz(
         questionNumber = number,
         question = question,
         answer = answer,

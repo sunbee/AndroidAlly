@@ -5,24 +5,24 @@ import com.google.firebase.firestore.PropertyName
 data class QuizQuestionFire(
     val chapterName: String = "",
 
-    @get:PropertyName("Number")
-    val number: Int,
+    @PropertyName("Number")
+    val number: Int = 1,
 
-    @get:PropertyName("Question")
-    val question: String,
+    @PropertyName("Question")
+    val question: String = "",
 
-    @get:PropertyName("Answer")
-    val answer: String,
+    @PropertyName("Answer")
+    val answer: String = "",
 
-    @get:PropertyName("Image")
-    val image: String?,
+    @PropertyName("Image")
+    val image: String? = null,
 
-    @get:PropertyName("YouTubeId")
-    val youTubeId: String,
+    @PropertyName("YouTubeId")
+    val youTubeId: String = "",
 
-    @get:PropertyName("Start")
-    val start: Int,
+    @PropertyName("Start")
+    val start: Int = 0,
 
-    @get:PropertyName("IsActive")
-    val isActive: Boolean
+    @PropertyName("IsActive")
+    val isActive: Boolean = true
 )

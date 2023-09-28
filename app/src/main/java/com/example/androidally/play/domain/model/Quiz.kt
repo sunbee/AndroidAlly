@@ -11,7 +11,7 @@ package com.example.androidally.play.domain.model
 *
 * We will display the record in the UI screen either as knowledge or a quiz.
 * */
-data class QuizQuestion(
+data class Quiz(
     val questionNumber: Int,
     val question: String,
     val answer: String,

@@ -1,11 +1,11 @@
 package com.example.androidally.play.data.remote
 
 import com.example.androidally.play.domain.model.ChapterInfo
-import com.example.androidally.play.domain.model.QuizQuestion
+import com.example.androidally.play.domain.model.Quiz
 
 interface FireStoreCRUD {
 
     suspend fun fetchModuleNames(): List<ChapterInfo>
 
-    suspend fun fetchModuleContents(name: String): List<QuizQuestion>
+    suspend fun fetchModuleContents(name: String): List<Quiz>
 }

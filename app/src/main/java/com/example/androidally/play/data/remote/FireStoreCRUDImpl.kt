@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.androidally.play.data.mapper.toChapterInfo
 import com.example.androidally.play.data.mapper.toQuizQuestion
 import com.example.androidally.play.domain.model.ChapterInfo
-import com.example.androidally.play.domain.model.QuizQuestion
+import com.example.androidally.play.domain.model.Quiz
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.tasks.await
@@ -36,8 +36,8 @@ class FireStoreCRUDImpl @Inject constructor(): FireStoreCRUD {
         return moduleNames
     }  // end FUN
 
-    override suspend fun fetchModuleContents(name: String): List<QuizQuestion> {
-        val quizzes = mutableListOf<QuizQuestion>()
+    override suspend fun fetchModuleContents(name: String): List<Quiz> {
+        val quizzes = mutableListOf<Quiz>()
         try {
             val querySnapshot = firestore.collection(name).get().await()
             for (document in querySnapshot.documents) {

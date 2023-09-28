@@ -1,9 +1,8 @@
 package com.example.androidally.play.data.repository
 
-import android.util.Log
 import com.example.androidally.play.data.remote.FireStoreCRUD
 import com.example.androidally.play.domain.model.ChapterInfo
-import com.example.androidally.play.domain.model.QuizQuestion
+import com.example.androidally.play.domain.model.Quiz
 import com.example.androidally.play.domain.repository.QuizRepository
 import com.example.androidally.util.Resource
 import kotlinx.coroutines.flow.Flow
@@ -25,7 +24,7 @@ class QuizRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getModuleContents(name: String): Flow<Resource<List<QuizQuestion>>> {
+    override suspend fun getModuleContents(name: String): Flow<Resource<List<Quiz>>> {
         return flow {
             emit(Resource.Loading(true))
             try {
