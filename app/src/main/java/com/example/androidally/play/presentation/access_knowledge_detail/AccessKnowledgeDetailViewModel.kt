@@ -6,14 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androidally.play.domain.repository.QuizRepository
 import com.example.androidally.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class AccessKnowledgeDetailViewModel @Inject constructor(
-    val quizRepository: QuizRepository,
-    val savedStateHandle: SavedStateHandle
+    private val quizRepository: QuizRepository,
+    private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
     val state = MutableStateFlow(AccessKnowledgeDetailState())

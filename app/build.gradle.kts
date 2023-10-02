@@ -107,4 +107,7 @@ dependencies {
 
     // SwipeRefresh
     implementation("com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha")
+
+    // YouTube Player
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 }

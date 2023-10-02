@@ -25,6 +25,7 @@ class AccessKnowledgeBankViewModel @Inject constructor(
             Log.d("FIRE CRUD", "${savedStateHandle.get<String>("name")}")
             val module = savedStateHandle.get<String>("name") ?: return@launch
             state.value = state.value.copy(
+                module = module,
                 isLoading = true
             )
             quizRepository

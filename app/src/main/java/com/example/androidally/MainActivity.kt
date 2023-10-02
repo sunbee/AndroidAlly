@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
@@ -16,6 +17,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.androidally.play.presentation.access_knowledge_bank.AccessKnowledgeBankScreen
 import com.example.androidally.play.presentation.access_knowledge_bank.AccessKnowledgeBankViewModel
+import com.example.androidally.play.presentation.access_knowledge_detail.AccessKnowledgeDetailScreen
+import com.example.androidally.play.presentation.access_knowledge_detail.AccessKnowledgeDetailViewModel
 import com.example.androidally.play.presentation.landing.LandingScreen
 import com.example.androidally.ui.theme.AndroidAllyTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,10 +52,34 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val viewModel: AccessKnowledgeBankViewModel = hiltViewModel()
-                            val questions = viewModel.state.collectAsState().value.questionBank
+                            val state = viewModel.state.collectAsState()
+
+                            val questions = state.value.questionBank
                             AccessKnowledgeBankScreen(
                                 questions = questions,
-                                onItemClick = { TODO("") } )
+                                onItemClick = {
+                                    val moduleName = state.value.module ?: ""
+                                    navController.navigate("details?name=${moduleName}&question=${it}")
+                                })
+                        }
+                        composable(
+                            "details?question={question}",
+                            arguments = listOf(
+                                navArgument("name") {
+                                    type = NavType.StringType
+                                    defaultValue = "AndroidBasics"
+                                },
+                                navArgument("question") {
+                                    type = NavType.StringType
+                                    defaultValue = "Why have you no question?"
+                                }
+                            )
+                        ) {
+                            val viewModel: AccessKnowledgeDetailViewModel = hiltViewModel()
+                            val quiz = viewModel.state.collectAsState().value.quiz
+                            AccessKnowledgeDetailScreen(
+                                quiz = quiz,
+                                modifier = Modifier.fillMaxWidth())
                         }
                     }  // end NAVHOST
                 }  // end SURFACE

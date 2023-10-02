@@ -25,7 +25,7 @@ fun AccessKnowledgeBankScreen(
         items(questions) { question ->
             QuizQuestionItem(
                 question = question,
-                onItemClick = { onItemClick(question) }
+                onItemClick = onItemClick
             )
         }
     }
@@ -34,13 +34,13 @@ fun AccessKnowledgeBankScreen(
 @Composable
 fun QuizQuestionItem(
     question: String,
-    onItemClick: () -> Unit
+    onItemClick: (String) -> Unit
 ) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp)
-            .clickable { onItemClick() },
+            .clickable { onItemClick(question) },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
         )
