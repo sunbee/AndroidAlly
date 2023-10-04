@@ -3,6 +3,7 @@ package com.example.androidally.play.presentation.access_knowledge_detail
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,7 +24,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 
 @Composable
 fun AccessKnowledgeDetailScreen(
-    quiz: Quiz?,
+    quiz: Quiz,
     modifier: Modifier
 ) {
     Column (
@@ -32,19 +32,8 @@ fun AccessKnowledgeDetailScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(6.dp)) {
-    }
-    if (quiz == null) {
-        Text(
-            text = "FOUND NO QUIZ!",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.SemiBold,
-            fontStyle = FontStyle.Italic,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        )
-    } else {
+            .padding(6.dp)
+    ) {
         Text(
             text = quiz.question,
             fontWeight = FontWeight.SemiBold,
@@ -55,8 +44,7 @@ fun AccessKnowledgeDetailScreen(
         KnowledgeBaseVideo(
             videoId = quiz.youTubeVideoId,
             startTimeSeconds = quiz.timestamp.toFloat(),
-            modifier = Modifier.fillMaxWidth())
-
+            modifier = Modifier.fillMaxSize())
     }
 }
 

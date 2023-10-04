@@ -5,10 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -76,11 +80,28 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val viewModel: AccessKnowledgeDetailViewModel = hiltViewModel()
-                            val quiz = viewModel.state.collectAsState().value.quiz
-                            AccessKnowledgeDetailScreen(
-                                quiz = quiz,
-                                modifier = Modifier.fillMaxWidth())
-                        }
+                            val state = viewModel.state.collectAsState()
+                            val quiz = state.value.quiz
+
+                            if (state.value.isLoading) {
+                                CircularProgressIndicator(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    color = Color.Green,
+                                    strokeWidth = 36.dp
+                                )
+                            } else if (state.value.quiz != null) {
+                                quiz?.let { quiz ->
+                                    AccessKnowledgeDetailScreen(
+                                        quiz = quiz,
+                                        modifier = Modifier.fillMaxWidth())
+                                }
+                            } else {
+                                Text(
+                                    text = "NO-SHOW!",
+                                    modifier = Modifier.fillMaxWidth()
+                                )
+                            }
+                        }  // end COMPOSABLE
                     }  // end NAVHOST
                 }  // end SURFACE
             }  // end THEME
