@@ -3,6 +3,7 @@ package com.example.androidally.play.presentation.landing
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -16,10 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.androidally.authenticate.data.UserData
 import com.example.androidally.play.domain.model.ChapterInfo
 
 @Composable
 fun LandingScreen(
+    userData: UserData?,
     viewModel: LandingViewModel = hiltViewModel(),
     onItemClick: (ChapterInfo) -> Unit
 ) {
@@ -47,8 +50,16 @@ fun LandingScreen(
                     textAlign = TextAlign.Center)
             }
         }
+
         else -> {
             // Display the list of modules when data is available.
+            Box(
+                modifier = Modifier.fillMaxWidth()) {
+                userData?.let { 
+                    Text(text = it.userId)
+                }
+                
+            }
             ModuleList(
                 modules = state.value.chapters,
                 onItemClick = onItemClick)
