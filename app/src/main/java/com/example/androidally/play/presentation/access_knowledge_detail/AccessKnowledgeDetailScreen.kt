@@ -65,7 +65,7 @@ fun KnowledgeBaseVideo(
                 object: AbstractYouTubePlayerListener() {
                     override fun onReady(youTubePlayer: YouTubePlayer) {
                         super.onReady(youTubePlayer)
-                        youTubePlayer.loadVideo(videoId, startTimeSeconds)
+                        youTubePlayer.cueVideo(videoId, startTimeSeconds)
                     }  // end ONREADY
                 }  // end OBJECT
             )  // end FRAGMENT
