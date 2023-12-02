@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -61,7 +60,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "sign-in") {
                         composable("sign-in") {
-                            val viewModel = viewModel<SignInViewModel>()
+                            val viewModel: SignInViewModel = hiltViewModel()
                             val state = viewModel.state.collectAsState()
 
                             LaunchedEffect(key1 = Unit) {

@@ -3,8 +3,11 @@ package com.example.androidally.authenticate.remote
 import com.example.androidally.authenticate.data.UserData
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class FireStoreUserCRUDImpl: FireStoreUserCRUD {
+@Singleton
+class FireStoreUserCRUDImpl @Inject constructor(): FireStoreUserCRUD {
 
     private val firestore = FirebaseFirestore.getInstance()
 
