@@ -75,7 +75,8 @@ fun PlayInteractiveQuizScreen(
                     }
                 }
                 Spacer(modifier = Modifier.height(8.dp))
-                qna.image?.let {
+                qna.image?.let { imageURI ->
+                    PlayInteractiveQuizImage(imageURI = imageURI)
 
                 }
                 Text(text = qna.answer,

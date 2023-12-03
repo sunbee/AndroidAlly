@@ -112,6 +112,9 @@ dependencies {
     // YouTube Player
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0")
 
+    // Image
+    implementation("io.coil-kt:coil-compose:2.0.0-rc01")
+
     //
     implementation("com.google.android.gms:play-services-auth:20.7.0")
 }

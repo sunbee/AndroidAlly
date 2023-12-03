@@ -136,7 +136,7 @@ class MainActivity : ComponentActivity() {
                                 })
                         }
                         composable(
-                            "details?question={question}",
+                            "details?name={name}&question={question}",
                             arguments = listOf(
                                 navArgument("name") {
                                     type = NavType.StringType
