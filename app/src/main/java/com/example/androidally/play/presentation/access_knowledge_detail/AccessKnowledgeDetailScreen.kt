@@ -45,6 +45,13 @@ fun AccessKnowledgeDetailScreen(
             videoId = quiz.youTubeVideoId,
             startTimeSeconds = quiz.timestamp.toFloat(),
             modifier = Modifier.fillMaxSize())
+        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            text = "YouTube ID: " + quiz.youTubeVideoId + ", Start: " + quiz.timestamp.toString(),
+            fontWeight = FontWeight.Thin,
+            fontSize = 12.sp,
+            modifier = Modifier.fillMaxWidth()
+        )
     }
 }
 
